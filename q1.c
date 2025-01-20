@@ -54,7 +54,7 @@ int main() {
     }
 
     // 0 for ascii, 1 for binary
-    int format_flag = 0;  
+    int format_flag = 1;  
     print_to_file(n, mat, format_flag);  
 
 }
