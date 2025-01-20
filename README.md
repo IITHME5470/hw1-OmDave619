@@ -4,4 +4,5 @@
 
 Note: 
 - Both questions share the same input file `input.in` in the `inputfiles` directory.
-- Compile with required files and run the executable.
+- The `format_flag` variable for question 1 should specified explicitly in the `q1.c` code. `0` for ascii and `1` for binary.
+- Compile with required flags and run the executable.
