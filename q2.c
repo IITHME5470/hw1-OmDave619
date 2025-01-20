@@ -24,15 +24,23 @@ double* is_eigenvector(int n, double** A, double* x) {
         prod[i] = sum;
     }
 
+    bool null_vector = true;    //to Handle edge case for null vector    
+
     // check if prod is multiple of x
     for (int i = 0; i < n - 1; i++) {
         if (fabs(prod[i] * x[i + 1] - prod[i + 1] * x[i]) > eps) {
             free(prod);
             return NULL;
         }
+        if (fabs(x[i]) > eps) null_vector = false;
     }
 
-    return prod;
+    if (null_vector) {
+        free(prod);
+        return NULL;
+    }
+
+    return prod;    
 }
 
 double** read_matrix(int n, char* filename) {
@@ -107,11 +115,11 @@ int main() {
         sprintf(filename, "./inputfiles/vec_%06d_%06d.in", n, i);
         double* vec = read_vector(n, filename);
 
-        double* prod = is_eigenvector(n, mat, vec);
+        double* prod = is_eigenvector(n, mat, vec); // returns prod = Ax if it is eigenvector, else returns NULL
         if (prod) {
             double eigen_value = 0;
-            for(int k = 0; k < n; k++) {
-                if(vec[k] == 0.0) continue;
+            for (int k = 0; k < n; k++) {
+                if (vec[k] == 0.0) continue;
                 eigen_value = prod[k] / vec[k];
                 break;
             }
