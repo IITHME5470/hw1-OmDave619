@@ -3,5 +3,5 @@
 # ME5470_HW1
 
 Note: 
-- input.in for both questions must be created inputfiles directory.
+- Both questions share the same input file `input.in` in the `inputfiles` directory.
 - Compile with required files and run the executable.
